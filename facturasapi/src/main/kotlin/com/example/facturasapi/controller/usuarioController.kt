@@ -1,6 +1,7 @@
 package com.example.facturasapi.controller
 
 import com.example.facturasapi.model.usuario
+import com.example.facturasapi.response.SuccessResponse
 import com.example.facturasapi.service.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -24,7 +25,10 @@ class usuarioController {
     }
 
     @PostMapping
-    fun save(@RequestBody usuario:usuario):usuario{
-        return usuarioService.save(usuario)
+    fun save(@RequestBody usuario:usuario):SuccessResponse{
+        return SuccessResponse().apply {
+            status = "success"
+            data = usuario
+        }
     }
 }
